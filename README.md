@@ -7,7 +7,7 @@
 <p align="center"><a href="https://heroku.com/deploy?template=https://github.com/xolvaid/sfiledownloader"><img src="https://www.herokucdn.com/deploy/button.png" alt="Deploy to Heroku" target="_blank"/></a></p>
 
 ## Too Lazy To Deploy?
-Use [@xIPToolsBot](https://t.me/xIPToolsBot)
+Use [@xIPToolsBot](https://t.me/xIPToolsBot)<br>
 Screenshot:
 ![ss](https://telegra.ph/file/80c7b585eaef19e5d5541.jpg)
 
