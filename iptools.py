@@ -5,10 +5,8 @@
 GitHub: github.com/xolvaid
 Partner: github.com/kgyya
 """
-
 from telethon import TelegramClient, events
-import re,json,requests,json,socket,os,sys
-sys.stdout.write("BOT SUCCESSFULLY DEPLOYED!, CHECK YOUR BOT AND TYPE '/help'")
+import re,json,requests,json,socket,os
 from requests.exceptions import ReadTimeout, Timeout, ConnectionError
 from bs4 import BeautifulSoup as bs
 api_id = os.getenv("API_ID") # get api_id
@@ -20,6 +18,9 @@ bot = TelegramClient('bot',api_id,api_hash).start(bot_token=bot_token)
 @bot.on(events.NewMessage(pattern="/start"))
 async def xx_(event):
         await event.reply("""**Menu Commands & Syntax:
+==============================
+/httpheader
+- Check HTTP Header
 ==============================
 /httpproxy
 - Check HTTP Proxy Status & Information
@@ -59,6 +60,9 @@ Repo  : github.com/xolvaid/iptools-bot**
 async def xx_(event):
 	await event.reply("""**Menu Commands & Syntax:
 ==============================
+/httpheader
+- Check HTTP Header
+==============================
 /httpproxy
 - Check HTTP Proxy Status & Information
 ==============================
@@ -91,6 +95,16 @@ GitHub: github.com/xolvaid
 Repo  : github.com/xolvaid/iptools-bot**
 ==============================
 **NEW BIG UPDATE CUMMING SOON!**""")
+
+@bot.on(events.NewMessage(pattern=r"/httpheader"))
+async def xn_x(event):
+	async with bot.conversation(event.chat_id) as new:
+		await event.reply("**Enter Hostname/IP: **")
+		host = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
+		host = await host
+		host = host.message.message
+		r = requests.get("https://api.hackertarget.com/httpheaders/?q="+host)
+		await event.reply("**==============================\n"+r.text+"==============================**")
 
 @bot.on(events.NewMessage(pattern=r"/subnet"))
 async def xnxx(event):
@@ -217,6 +231,7 @@ async def x(event):
 		await event.reply(f"""**===============================
 IP          : {ip}
 SERVER      : {rr.headers['Server']}
+ISP         : {js['isp']}
 STATUS CODE : {rr.status_code}
 COUNTRY     : {js['country']}
 CONTENT-TYPE: {rr.headers['Content-Type']}
