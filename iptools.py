@@ -6,9 +6,9 @@ GitHub: github.com/xolvaid
 Partner: github.com/kgyya
 """
 
-print("""YOUR BOT IS SUCCESSFULLY DEPLOYED!!""")
 from telethon import TelegramClient, events
-import re,json,requests,json,socket,os
+import re,json,requests,json,socket,os,sys
+sys.stdout.write("BOT SUCCESSFULLY DEPLOYED!, CHECK YOUR BOT AND TYPE '/help'")
 from requests.exceptions import ReadTimeout, Timeout, ConnectionError
 from bs4 import BeautifulSoup as bs
 api_id = os.getenv("API_ID") # get api_id
