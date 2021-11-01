@@ -100,7 +100,10 @@ Repo  : github.com/xolvaid/iptools-bot**
 async def xn_x(event):
 	async with bot.conversation(event.chat_id) as new:
 		await event.reply("**Enter Hostname/IP: **")
-		host = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
+		try:
+			host = new.wait_event(events.NewMessage(incoming=True, from_users=event.from_id.user_id))
+		except:
+			host = new.wait_event(events.NewMessage(incoming=True,from_users=event.chat_id))
 		host = await host
 		host = host.message.message
 		r = requests.get("https://api.hackertarget.com/httpheaders/?q="+host)
@@ -113,7 +116,10 @@ async def xnxx(event):
 Contoh Untuk IPv4:** ```176.694.20/24```
 
 **Contoh Untuk IPv6:** ```2001:db8::/32```""")
-		ip = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
+		try:
+			ip = new.wait_event(events.NewMessage(incoming=True, from_users=event.from_id.user_id))
+		except:
+			ip = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
 		ip = await ip
 		ip = ip.message.message
 		r = requests.get("https://api.hackertarget.com/subnetcalc/?q="+ip)
@@ -123,7 +129,10 @@ Contoh Untuk IPv4:** ```176.694.20/24```
 async def x_x(event):
 	async with bot.conversation(event.chat_id) as new:
 		await event.reply("**Enter HTTP Proxy: (example: 172.6.9.420:8080)**")
-		proxy = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
+		try:
+			proxy = new.wait_event(events.NewMessage(incoming=True, from_users=event.from_id.user_id))
+		except:
+			proxy = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
 		proxy = await proxy
 		proxy = proxy.message.message.replace("http://","").replace("https://","")
 		try:
@@ -153,11 +162,17 @@ DATE        : {rr.headers['Date']}
 async def x__(event):
 	await event.reply("**Enter IP Or Hostname: **")
 	async with bot.conversation(event.chat_id) as new:
-		ip = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
+		try:
+			ip = new.wait_event(events.NewMessage(incoming=True, from_users=event.from_id.user_id))
+		except:
+			ip = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
 		ip = await ip
 		ip = ip.message.message
 		await event.reply("**Enter Port: **")
-		port = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
+		try:
+			port = new.wait_event(events.NewMessage(incoming=True, from_users=event.from_id.user_id))
+		except:
+			port = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
 		port = await port
 		port = port.message.message
 		ssocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -179,7 +194,10 @@ async def x_(event):
 	result_success = []
 	async with bot.conversation(event.chat_id) as new:
 		await event.reply("**Enter Hostname: **")
-		ip = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
+		try:
+			ip = new.wait_event(events.NewMessage(incoming=True, from_users=event.from_id.user_id))
+		except:
+			ip = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
 		ip = await ip
 		ip = ip.message.message
 		raw_subd = requests.get("https://api.hackertarget.com/hostsearch/?q="+ip)
@@ -222,7 +240,10 @@ STATUS      : NOT POINTED TO CF / CLOUDFLARE
 async def x(event):
 	async with bot.conversation(event.chat_id) as new:
 		await event.reply("**Enter IP Or Hostname: **")
-		ip = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
+		try:
+			ip = new.wait_event(events.NewMessage(incoming=True, from_users=event.from_id.user_id))
+		except:
+			ip = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
 		ip = await ip
 		ip = ip.message.message.replace("https://","").replace("http://","")
 		r = requests.get("http://ip-api.com/json/"+ip)
@@ -242,7 +263,10 @@ DATE        : {rr.headers['Date']}
 async def _(event):
 	async with bot.conversation(event.chat_id) as new:
 		await event.reply("**Enter IP: **")
-		ip = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
+		try:
+			ip = new.wait_event(events.NewMessage(incoming=True, from_users=event.from_id.user_id))
+		except:
+			ip = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
 		ip = await ip
 		ip = ip.message.message
 		reverse = ses.get("https://api.hackertarget.com/reverseiplookup/?q="+ip)
@@ -253,7 +277,10 @@ async def _(event):
 async def __(event):
 	async with bot.conversation(event.chat_id) as new:
 		await event.reply("**Enter Hostname: **")
-		host = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
+		try:
+			host = new.wait_event(events.NewMessage(incoming=True, from_users=event.from_id.user_id))
+		except:
+			host = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
 		host = await host
 		host = host.message.message
 		r = ses.get(f"http://ip-api.com/json/{host}").text
@@ -264,7 +291,10 @@ async def __(event):
 async def ___(event):
 	async with bot.conversation(event.chat_id) as new:
 		await event.reply("**Enter Hostname: **")
-		ip = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
+		try:
+			ip = new.wait_event(events.NewMessage(incoming=True, from_users=event.from_id.user_id))
+		except:
+			ip = new.wait_event(events.NewMessage(incoming=True, from_users=event.chat_id))
 		ip = await ip
 		ip = ip.message.message
 		r = ses.get("https://api.hackertarget.com/hostsearch/?q="+ip)
